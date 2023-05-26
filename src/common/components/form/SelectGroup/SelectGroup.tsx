@@ -2,19 +2,19 @@ import * as React from 'react';
 import * as RadixSelect from '@radix-ui/react-select';
 import { ChevronDownIcon, ChevronUpIcon } from '@radix-ui/react-icons';
 
-import Item from './components/Item';
+import GroupItem from './components/GroupItem';
 
-import { SelectOption } from './types';
+import { SelectGroupOption } from './types';
 
-import * as S from './Select.styles';
+import * as S from './SelectGroup.styles';
 
-type SelectProps = RadixSelect.SelectProps & {
+type SelectGroupProps = RadixSelect.SelectProps & {
   ariaLabel: string;
   placeholder: string;
-  options: SelectOption[];
+  options: SelectGroupOption[];
 };
 
-export const Select = ({ ariaLabel, placeholder, options, ...props }: SelectProps) => (
+export const SelectGroup = ({ ariaLabel, placeholder, options, ...props }: SelectGroupProps) => (
   <RadixSelect.Root {...props}>
     <S.SelectTrigger aria-label={ariaLabel}>
       <RadixSelect.Value placeholder={placeholder} />
@@ -29,9 +29,21 @@ export const Select = ({ ariaLabel, placeholder, options, ...props }: SelectProp
         </S.SelectScrollUpButton>
 
         <S.SelectViewport>
-          {options.map((item) => (
-            <Item key={item.value} value={item.value} label={item.label} />
-          ))}
+          {
+            options.map((group, groupIndex) => (
+              <>
+                <GroupItem
+                  key={group.value}
+                  label={group.label}
+                  value={group.value}
+                  options={group.options}
+                />
+                {(groupIndex + 1) < options.length && (
+                  <S.SelectSeparator />
+                )}
+              </>
+            ))
+          }
         </S.SelectViewport>
 
         <S.SelectScrollDownButton>

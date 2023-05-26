@@ -1,10 +1,10 @@
 import * as React from 'react';
 import * as RadixSelect from '@radix-ui/react-select';
+import { CheckIcon } from '@radix-ui/react-icons';
 
 import { SelectGroupOption } from '../types';
-import SelectItem from './Item';
 
-import * as S from './Item.styles';
+import * as S from './GroupItem.styles';
 
 type SelectGroupItemProps = SelectGroupOption;
 
@@ -17,12 +17,14 @@ const SelectGroupItem = React.forwardRef<HTMLDivElement, SelectGroupItemProps>((
     <RadixSelect.Group key={value}>
       <S.SelectLabel>{label}</S.SelectLabel>
       {options.map(option => (
-        <SelectItem
-          key={option.value}
-          label={option.label}
-          value={option.value}
-          ref={forwardedRef}
-        />
+        <>
+          <S.SelectItem key={option.value} value={option.value} ref={forwardedRef}>
+            <RadixSelect.ItemText>{option.label}</RadixSelect.ItemText>
+            <S.SelectItemIndicator>
+              <CheckIcon />
+            </S.SelectItemIndicator>
+          </S.SelectItem>
+        </>
       ))}
     </RadixSelect.Group>
   );
