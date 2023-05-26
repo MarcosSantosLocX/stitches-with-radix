@@ -3,6 +3,7 @@ import * as React from 'react'
 import FieldFeedback from "@/common/components/form/FieldFeedback/FieldFeedback";
 import { TextField } from "@/common/components/form/TextField/TextField";
 import { Select } from "@/common/components/form/Select/Select";
+import { Checkbox } from "@/common/components/form/Checkbox/Checkbox";
 import { Button } from "@/common/components/structure/Button/Button";
 import { Tooltip } from "@/common/components/structure/Tooltip/Tooltip";
 import { Heading } from "@/common/components/structure/Typography/Typography";
@@ -54,13 +55,10 @@ export default function Home() {
           <Heading as="h2">Campos de entrada</Heading>
           <br />
           <FieldFeedback error={error}>
-            <TextField placeholder="Description" />
+            <TextField key="1" placeholder="Description" />
           </FieldFeedback>
           <FieldFeedback error={{ message: "This field is required" }}>
-            <TextField placeholder="Description" />
-          </FieldFeedback>
-          <FieldFeedback>
-            <TextField placeholder="Description" />
+            <TextField key="2" placeholder="Description" />
           </FieldFeedback>
         </S.Card>
 
@@ -107,10 +105,13 @@ export default function Home() {
 
         <S.Card>
           <Heading as="h2">Campos de seleção</Heading>
-          <br />
-          <Select ariaLabel="Fruit"  placeholder="Select a fruit..."  type="item" options={fruitsOptions} />
+          {/* <br />
+          <Select key="11" ariaLabel="Fruit"  placeholder="Select a fruit..."  type="item" options={fruitsOptions} /> */}
           <br />
           <Select ariaLabel="Meal" placeholder="Select your favorite meal..."  type="group" options={mealOptions} />
+          
+          <br />
+          <Checkbox />
         </S.Card>
       </S.CardGroup>
     </S.Container>
