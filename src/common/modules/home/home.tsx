@@ -2,7 +2,9 @@ import * as React from 'react'
 
 import FieldFeedback from "@/common/components/form/FieldFeedback/FieldFeedback";
 import { TextField } from "@/common/components/form/TextField/TextField";
+import { TextArea }  from "@/common/components/form/TextArea/TextArea";
 import { Select } from "@/common/components/form/Select/Select";
+import { SelectGroup } from "@/common/components/form/SelectGroup/SelectGroup";
 import { Checkbox } from "@/common/components/form/Checkbox/Checkbox";
 import { Button } from "@/common/components/structure/Button/Button";
 import { Tooltip } from "@/common/components/structure/Tooltip/Tooltip";
@@ -46,7 +48,9 @@ export default function Home() {
     setShowError(!showError)
   }
 
-  const error = showError ? { message: "This field is required" } : undefined;
+  const error = showError 
+    ? { message: "This field is required" }
+    : undefined;
 
   return (
     <S.Container size="2">
@@ -58,7 +62,7 @@ export default function Home() {
             <TextField key="1" placeholder="Description" />
           </FieldFeedback>
           <FieldFeedback error={{ message: "This field is required" }}>
-            <TextField key="2" placeholder="Description" />
+            <TextArea key="2" placeholder="Description" />
           </FieldFeedback>
         </S.Card>
 
@@ -105,10 +109,12 @@ export default function Home() {
 
         <S.Card>
           <Heading as="h2">Campos de seleção</Heading>
-          {/* <br />
-          <Select key="11" ariaLabel="Fruit"  placeholder="Select a fruit..."  type="item" options={fruitsOptions} /> */}
+          
           <br />
-          <Select ariaLabel="Meal" placeholder="Select your favorite meal..."  type="group" options={mealOptions} />
+          <Select ariaLabel="Fruit"  placeholder="Select a fruit..." options={fruitsOptions} />
+
+          <br />
+          <SelectGroup ariaLabel="Meal" placeholder="Select your favorite meal..." options={mealOptions} />
           
           <br />
           <Checkbox />
