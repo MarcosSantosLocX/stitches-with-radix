@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as RadixSelect from '@radix-ui/react-select';
-import { CheckIcon, ChevronDownIcon, ChevronUpIcon } from '@radix-ui/react-icons';
+import { ChevronDownIcon, ChevronUpIcon } from '@radix-ui/react-icons';
 
 import GroupItem from './components/GroupItem';
 import Item from './components/Item';
@@ -17,37 +17,38 @@ type TypeOptions = {
   options: SelectGroupOption[];
 }
 
-type SelectProps = TypeOptions & {
+type SelectProps = RadixSelect.SelectProps & TypeOptions & {
   ariaLabel: string;
   placeholder: string;
 };
 
-export const Select = (selectProps: SelectProps) => {
+export const Select = ({ ariaLabel, placeholder, type, options, ...props }: SelectProps) => {
   const ItemComponent = React.useMemo(() => {
-    if (selectProps.type === 'group') {
-      return selectProps.options.map((group, groupIndex) => (
+    if (type === 'group') {
+      return options.map((group, groupIndex) => (
         <>
           <GroupItem
+            key={group.value}
             label={group.label}
             value={group.value}
             options={group.options}
           />
-          {(groupIndex + 1) < selectProps.options.length && (
+          {(groupIndex + 1) < options.length && (
             <S.SelectSeparator />
           )}
         </>
       ))
     }
 
-    return selectProps.options.map((item) => (
+    return options.map((item) => (
       <Item key={item.value} value={item.value} label={item.label} />
     )) 
-  }, [selectProps.options, selectProps.type])  
+  }, [options, type])  
   
   return (
-    <RadixSelect.Root>
-      <S.SelectTrigger aria-label={selectProps.ariaLabel}>
-        <RadixSelect.Value placeholder={selectProps.placeholder} />
+    <RadixSelect.Root {...props}>
+      <S.SelectTrigger aria-label={ariaLabel}>
+        <RadixSelect.Value placeholder={placeholder} />
         <S.SelectIcon>
           <ChevronDownIcon />
         </S.SelectIcon>

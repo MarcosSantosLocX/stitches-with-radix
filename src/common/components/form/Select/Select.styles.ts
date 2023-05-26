@@ -11,7 +11,7 @@ export const SelectTrigger = styled(Select.SelectTrigger, {
   borderRadius: '$2',
   padding: '0 15px',
   lineHeight: 1,
-  height: 35,
+  height: '$10',
   gap: 5,
   backgroundColor: 'white',
   fontSize: '$4',
