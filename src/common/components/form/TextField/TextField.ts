@@ -2,7 +2,7 @@ import { styled } from '@/styles/stitches.config'
 
 export const TextField = styled('input', {
   width: '100%',
-  paddingY: '10px',
+  height: '$10',
   border: '1px solid',
   borderColor: '$violet6',
   borderRadius: '$2',
