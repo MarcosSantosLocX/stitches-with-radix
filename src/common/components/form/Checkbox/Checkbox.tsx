@@ -8,7 +8,7 @@ type CheckboxProps = RadixCheckbox.CheckboxProps;
 
 export const Checkbox = React.forwardRef<HTMLButtonElement, CheckboxProps>((props, forwardRef) => {
     return (
-      <S.Root {...props}>
+      <S.Root {...props} ref={forwardRef}>
         <S.Indicator>
           <CheckIcon />
         </S.Indicator>
