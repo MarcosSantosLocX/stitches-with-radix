@@ -31,9 +31,8 @@ export const SelectGroup = ({ ariaLabel, placeholder, options, ...props }: Selec
         <S.SelectViewport>
           {
             options.map((group, groupIndex) => (
-              <>
+              <React.Fragment key={group.value}>
                 <GroupItem
-                  key={group.value}
                   label={group.label}
                   value={group.value}
                   options={group.options}
@@ -41,7 +40,7 @@ export const SelectGroup = ({ ariaLabel, placeholder, options, ...props }: Selec
                 {(groupIndex + 1) < options.length && (
                   <S.SelectSeparator />
                 )}
-              </>
+              </React.Fragment>
             ))
           }
         </S.SelectViewport>

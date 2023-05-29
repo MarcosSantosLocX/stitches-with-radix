@@ -14,17 +14,15 @@ const SelectGroupItem = React.forwardRef<HTMLDivElement, SelectGroupItemProps>((
   options
 }, forwardedRef) => {
   return (
-    <RadixSelect.Group key={value}>
+    <RadixSelect.Group>
       <S.SelectLabel>{label}</S.SelectLabel>
       {options.map(option => (
-        <>
-          <S.SelectItem key={option.value} value={option.value} ref={forwardedRef}>
-            <RadixSelect.ItemText>{option.label}</RadixSelect.ItemText>
-            <S.SelectItemIndicator>
-              <CheckIcon />
-            </S.SelectItemIndicator>
-          </S.SelectItem>
-        </>
+        <S.SelectItem key={option.value} value={option.value} ref={forwardedRef}>
+          <RadixSelect.ItemText>{option.label}</RadixSelect.ItemText>
+          <S.SelectItemIndicator>
+            <CheckIcon />
+          </S.SelectItemIndicator>
+        </S.SelectItem>
       ))}
     </RadixSelect.Group>
   );

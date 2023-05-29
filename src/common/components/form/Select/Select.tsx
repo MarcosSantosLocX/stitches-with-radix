@@ -30,7 +30,11 @@ export const Select = ({ ariaLabel, placeholder, options, ...props }: SelectProp
 
         <S.SelectViewport>
           {options.map((item) => (
-            <Item key={item.value} value={item.value} label={item.label} />
+            <Item
+              key={item.value}
+              value={item.value}
+              label={item.label}
+            />
           ))}
         </S.SelectViewport>
 
