@@ -1,12 +1,11 @@
-import React from 'react';
+import * as React from 'react';
+import type { FieldError } from 'react-hook-form';
 
 import * as S from './FieldFeedback.styles';
 
 type FieldFeedbackProps = {
   children: React.ReactNode;
-  error?: {
-    message: string;
-  };
+  error?: FieldError;
 }
 
 const FieldFeedback = ({ children, error }: FieldFeedbackProps) => {
