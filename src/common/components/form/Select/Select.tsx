@@ -14,10 +14,15 @@ type SelectProps = RadixSelect.SelectProps & {
   options: SelectOption[];
 };
 
-export const Select = ({ ariaLabel, placeholder, options, ...props }: SelectProps) => (
+export const Select = React.forwardRef<HTMLDivElement, SelectProps>(({
+  ariaLabel,
+  placeholder,
+  options,
+  ...props
+}, forwardRef) => (
   <RadixSelect.Root {...props}>
     <S.SelectTrigger aria-label={ariaLabel}>
-      <RadixSelect.Value placeholder={placeholder} />
+      <RadixSelect.Value placeholder={placeholder} ref={forwardRef} />
       <S.SelectIcon>
         <ChevronDownIcon />
       </S.SelectIcon>
@@ -44,4 +49,7 @@ export const Select = ({ ariaLabel, placeholder, options, ...props }: SelectProp
       </S.SelectContent>
     </RadixSelect.Portal>
   </RadixSelect.Root>
-);
+));
+
+Select.displayName = 'Select';
+

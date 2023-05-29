@@ -1,6 +1,6 @@
 import Head from "next/head";
 
-import HomeModule from '@/common/modules/home/home';
+import Examples from '@/common/modules/examples/examples';
 
 export default function Home() {
   return (
@@ -9,7 +9,7 @@ export default function Home() {
         <title>Use Stitches with Next.js</title>
       </Head>
       <main>
-        <HomeModule />
+        <Examples />
       </main>
     </>
   );
