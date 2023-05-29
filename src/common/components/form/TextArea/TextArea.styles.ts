@@ -17,6 +17,8 @@ export const TextArea = styled('textarea', {
   lineHeight: "148%",
   letterSpacing: "-0.04em",
   paddingY: "$4",
+  textAlign: 'left',
+  
   "&:invalid": {
     borderColor: "$red10",
   }
