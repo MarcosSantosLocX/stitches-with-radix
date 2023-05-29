@@ -8,7 +8,6 @@ export const TextArea = styled('textarea', {
   borderColor: '$violet6',
   borderRadius: '$2',
   backgroundColor: 'white',
-  textIndent: '16px',
   fontSize: '$4',
   color: "$gray10",
   fontFamily: "$system",
@@ -16,9 +15,9 @@ export const TextArea = styled('textarea', {
   fontWeight: 400,
   lineHeight: "148%",
   letterSpacing: "-0.04em",
-  paddingY: "$4",
+  padding: "$4",
   textAlign: 'left',
-  
+  wordWrap: 'break-word',
   "&:invalid": {
     borderColor: "$red10",
   }
