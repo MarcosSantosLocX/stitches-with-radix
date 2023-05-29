@@ -3,12 +3,13 @@ import { useForm, Controller } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod';
 
 import { Heading, Paragraph, Link } from "@/common/components/structure/Typography/Typography";
+import { Button } from "@/common/components/structure/Button/Button";
 import FieldFeedback from "@/common/components/form/FieldFeedback/FieldFeedback";
 import { TextField } from "@/common/components/form/TextField/TextField";
 import { TextArea }  from "@/common/components/form/TextArea/TextArea";
 import { Select } from "@/common/components/form/Select/Select";
 import { Checkbox } from '@/common/components/form/Checkbox/Checkbox';
-import { Button } from "@/common/components/structure/Button/Button";
+import { RadioGroup } from '@/common/components/form/RadioGroup/RadioGroup';
 
 import { formSchema } from "./validationSchema";
 import type { FormFields } from "./validationSchema";
@@ -21,6 +22,13 @@ const fruitsOptions = [
   { value: 'blueberry', label: 'Blueberry' },
   { value: 'grapes', label: 'Grapes' },
   { value: 'pineapple', label: 'Pineapple' }
+]
+
+const meatsOptions = [
+  { value: 'beef', label: 'Beef' },
+  { value: 'chicken', label: 'Chicken' },
+  { value: 'lamb', label: 'Lamb' },
+  { value: 'pork', label: 'Pork' }
 ]
 
 export default function RHF() {
@@ -67,25 +75,39 @@ export default function RHF() {
               )}
             />
           </FieldFeedback>
-          <FieldFeedback error={form.formState.errors.termUsage}>
-            <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
-              <Controller
-                name='termUsage'
-                control={form.control}
-                render={({ field: { value, onChange, name } }) => (
-                  <Checkbox
-                    name={name}
-                    checked={value}
-                    onCheckedChange={(value) => {
-                      console.log({ name, value });
-                      onChange({ target: { name, value } })
-                    }}
-                  />
-                )}
-              />
-              <Paragraph>Aceitar os <Link href='/'>termos de uso</Link></Paragraph>
-            </div>
+          <FieldFeedback error={form.formState.errors.meat}>
+          <Controller
+              name='meat'
+              control={form.control}
+              render={({ field: { value, onChange, name } }) => (
+                <RadioGroup
+                  name={name}
+                  value={value}
+                  onValueChange={(value) => {
+                    onChange({ target: { name, value } })
+                  }}
+                  options={meatsOptions}
+                />
+              )}
+            />
           </FieldFeedback>
+          <S.Flex>
+            <Controller
+              name='termUsage'
+              control={form.control}
+              render={({ field: { value, onChange, name } }) => (
+                <Checkbox
+                  name={name}
+                  checked={value}
+                  onCheckedChange={(value) => {
+                    console.log({ name, value });
+                    onChange({ target: { name, value } })
+                  }}
+                />
+              )}
+            />
+            <Paragraph>Aceitar os <Link href='/'>termos de uso</Link></Paragraph>
+          </S.Flex>
           <Button type="submit" color="violet" size="lg">
             Enviar formulário
           </Button>

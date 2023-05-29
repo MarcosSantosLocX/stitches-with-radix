@@ -18,6 +18,9 @@ export const formSchema = z.object({
   fruit: z.string({
     required_error: 'Campo obrigatório'
   }),
+  meat: z.string({
+    required_error: 'Campo obrigatório'
+  }),
   termUsage: z.boolean(),
 });
 

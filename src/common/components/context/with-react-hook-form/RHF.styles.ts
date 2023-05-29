@@ -29,3 +29,9 @@ export const TermUsage = styled('span', {
   fontFamily: '$system',
   fontSize: '$4'
 })
+
+export const Flex = styled('div', {
+  display: 'flex',
+  alignItems: 'center',
+  gap: '$4'
+});

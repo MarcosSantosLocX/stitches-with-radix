@@ -42,6 +42,26 @@ export const Paragraph = styled('p', {
   }
 })
 
+
+export const Label = styled('label', {
+  fontFamily: '$system',
+  color: '$gray10',
+  lineHeight: 1,
+  variants: {
+    size: {
+      md: {
+        fontSize: '$4'
+      },
+      lg: {
+        fontSize: '$5'
+      }
+    }
+  },
+  defaultVariants: {
+    size: 'md'
+  }
+})
+
 export const Link = styled('a', {
   fontFamily: '$system',
   textDecoration: 'none',
