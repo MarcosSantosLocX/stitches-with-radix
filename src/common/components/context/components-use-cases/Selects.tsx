@@ -5,7 +5,7 @@ import { SelectGroup } from "@/common/components/form/SelectGroup/SelectGroup";
 import { Checkbox } from "@/common/components/form/Checkbox/Checkbox";
 import { Heading } from "@/common/components/structure/Typography/Typography";
 
-import * as S from './styles';
+import * as S from './Playground.styles';
 
 const fruitsOptions = [
   { value: 'apple', label: 'Apple' },
@@ -39,7 +39,7 @@ const mealOptions = [
 export default function Selects() {
   return (
     <S.Card>
-      <Heading as="h2">Campos de seleção</Heading>
+      <Heading as="h2" size="lg">Campos de seleção</Heading>
       
       <br />
       <Select ariaLabel="Fruit"  placeholder="Select a fruit..." options={fruitsOptions} />

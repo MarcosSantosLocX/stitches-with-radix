@@ -2,18 +2,18 @@ import * as React from 'react'
 import { useForm, Controller } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod';
 
+import { Heading, Paragraph, Link } from "@/common/components/structure/Typography/Typography";
 import FieldFeedback from "@/common/components/form/FieldFeedback/FieldFeedback";
 import { TextField } from "@/common/components/form/TextField/TextField";
 import { TextArea }  from "@/common/components/form/TextArea/TextArea";
 import { Select } from "@/common/components/form/Select/Select";
+import { Checkbox } from '@/common/components/form/Checkbox/Checkbox';
 import { Button } from "@/common/components/structure/Button/Button";
-import { Heading } from "@/common/components/structure/Typography/Typography";
 
 import { formSchema } from "./validationSchema";
 import type { FormFields } from "./validationSchema";
 
-import * as S from "./styles";
-import { Checkbox } from '../../form/Checkbox/Checkbox';
+import * as S from "./RHF.styles";
 
 const fruitsOptions = [
   { value: 'apple', label: 'Apple' },
@@ -38,25 +38,18 @@ export default function RHF() {
   return (
     <S.CardGroup>
       <S.Card>
-        <Heading as="h2">Campos com react hook form</Heading>
-        
+        <Heading as="h2" size='lg'>Campos com react hook form</Heading>
         <br />
-
         <form onSubmit={form.handleSubmit(onSubmit)} style={{ display: 'contents' }}>
-          
           <FieldFeedback error={form.formState.errors.title}>
             <TextField {...form.register('title')} placeholder="Titulo" />
-          </FieldFeedback>
-
-          
+          </FieldFeedback>          
           <FieldFeedback error={form.formState.errors.description}>
             <TextArea
               {...form.register('description')}
               placeholder="Descrição"
             />
-          </FieldFeedback>
-
-          
+          </FieldFeedback>          
           <FieldFeedback error={form.formState.errors.fruit}>
             <Controller
               name='fruit'
@@ -74,7 +67,6 @@ export default function RHF() {
               )}
             />
           </FieldFeedback>
-
           <FieldFeedback error={form.formState.errors.termUsage}>
             <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
               <Controller
@@ -91,12 +83,11 @@ export default function RHF() {
                   />
                 )}
               />
-              <S.TermUsage>Aceita os termos de uso ?</S.TermUsage>
+              <Paragraph>Aceitar os <Link href='/'>termos de uso</Link></Paragraph>
             </div>
           </FieldFeedback>
-          
-          <Button type="submit" color="violet" size='lg'>
-            Enviar formulario
+          <Button type="submit" color="violet" size="lg">
+            Enviar formulário
           </Button>
         </form>
       </S.Card>

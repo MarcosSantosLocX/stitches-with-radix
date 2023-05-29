@@ -3,17 +3,22 @@ import * as RadixTooltip from '@radix-ui/react-tooltip';
 
 import { trigger, content, contentArrow } from './Tooltip.styles';
 
-export const Tooltip = () => {
+type TooltipProps = {
+  children: React.ReactNode;
+  text: string;
+}
+
+export const Tooltip = ({ children, text }: TooltipProps) => {
   return (
     <RadixTooltip.Provider>
       <RadixTooltip.Root>
         <RadixTooltip.Trigger className={trigger()} asChild>
-          <p>Hover me</p>
+          {children}
         </RadixTooltip.Trigger>
 
         <RadixTooltip.Portal>
           <RadixTooltip.Content className={content()} sideOffset={5}>
-            Great job
+            {text}
             <RadixTooltip.Arrow className={contentArrow()} />
           </RadixTooltip.Content>
         </RadixTooltip.Portal>

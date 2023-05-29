@@ -49,11 +49,6 @@ const slideLeftAndFade = keyframes({
 }) 
 
 export const trigger = css({
-  fontFamily: '$system',
-  fontWeight: 'bold',
-  fontSize: '$3',
-  color: '$violet8',
-  cursor: 'pointer',
   width: 'max-content'
 });
 

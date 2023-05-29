@@ -3,12 +3,13 @@ import * as React from 'react'
 import { Heading } from "@/common/components/structure/Typography/Typography";
 import { Button } from '@/common/components/structure/Button/Button';
 
-import * as S from './styles';
+import * as S from './Playground.styles';
 
 export default function Selects() {
   return (
     <S.Card>
-      <Heading as="h2">Botões</Heading>
+      <Heading as="h2" size="lg">Botões</Heading>
+      <br />
       <S.GroupButton>
         <Button type="button" color="violet">
           Medium

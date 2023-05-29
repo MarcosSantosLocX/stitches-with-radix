@@ -5,7 +5,7 @@ import Selects from './Selects';
 import Buttons from './Buttons';
 import Tooltip from './Tooltip';
 
-import * as S from './styles';
+import * as S from './Playground.styles';
 
 export default function Playground() {
   return (
